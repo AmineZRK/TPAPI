@@ -37,6 +37,9 @@ const DataSchema = new mongoose.Schema({
           description:String,
         },
     ],
+    imageURL:{
+        type:String
+    },
     image:{
         type: String,
         required: true

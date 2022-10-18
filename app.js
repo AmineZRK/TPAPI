@@ -28,7 +28,8 @@ mongoose.connect(URI,
 //         if(err) throw err;
 //         console.log('connected to MongoDB')
 //     });
-    
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 //Static Image Url defined
 // sample Url: http://localhost:5000/user/photo_1648757395684.jpg

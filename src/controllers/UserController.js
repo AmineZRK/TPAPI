@@ -174,9 +174,7 @@ if(!Exist){
         });
       }
       
-      
-
-      //console.log(ok)
+    
     }catch(error){
       res.status(501).json({
         code: 501,
@@ -223,7 +221,6 @@ if(!Exist){
           console.log(reqBody)
           const updateItem = await User.findOneAndUpdate( { _id: id }, reqBody,{ projection: { _id: 0, password: 0 } } );
 
-      //return console.log(getImageName);
       
         
           return res.status(200).json({
