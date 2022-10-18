@@ -30,6 +30,13 @@ const DataSchema = new mongoose.Schema({
         type:Number,
         required: true
     },
+    review:[
+        {
+          UserId: String,
+          grade: Number,
+          description:String,
+        },
+    ],
     image:{
         type: String,
         required: true

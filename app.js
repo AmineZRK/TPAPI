@@ -32,7 +32,7 @@ mongoose.connect(URI,
 
 //Static Image Url defined
 // sample Url: http://localhost:5000/user/photo_1648757395684.jpg
-//app.use('/user', express.static('storage/images'))
+app.use('/book', express.static('storage/images'))
 
 
 //Base Route

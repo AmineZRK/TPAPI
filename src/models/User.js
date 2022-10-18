@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 //const crypto = require('crypto')
-
 const DataSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -10,11 +9,12 @@ const DataSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        reqired: true
+        required: true,
+        unique: [true, 'entre un unique mail']
     },
     password:{
         type: String,
-        reqired: true
+        required: true
     },
     phone: {
         type: String,
