@@ -7,12 +7,7 @@ const fs = require('fs');
 const DIR = './';
 const jwt = require('jsonwebtoken');
 
-function findemail(X) {
-  async (email) => {
-    X = await User.find({ email });
-  
-}
-};
+
 
 
 module.exports = class UserController {
@@ -154,7 +149,7 @@ if(!Exist){
                         role: role 
                     },
                     'RANDOM_TOKEN_SECRET',
-                    { expiresIn: '24h' }
+                    { expiresIn: '24h' } 
                 ),
                 isAdmin: role
             });

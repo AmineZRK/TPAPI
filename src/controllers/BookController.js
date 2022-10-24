@@ -115,6 +115,31 @@ module.exports = class BookController {
     }
   }
 
+
+
+  //Book by genre
+  static GenreBook = async(req, res)=>{
+    const genre=req.params.genre
+    try{
+      const allBookInfo = await Book.find({categories:genre}).select("-image");
+      
+
+      //return console.log(singleUserInfo);
+      return res.status(200).json({
+        code: 200,
+        message: "User Information",
+        data: allBookInfo,
+      });
+    }
+    catch(error){
+      res.status(501).json({
+        code: 501,
+        message: error.message,
+        error: true,
+      });
+    }
+  }
+
   //add review
   static addReview = async (req, res) => {
     let payload = req.body;
