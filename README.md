@@ -43,7 +43,7 @@ chaque user peut supprimer son compte
 
 ## Create Book
 
-juste l'admin qui peu creer un book
+juste l'admin qui peut creer un book
 
 ![This is a alt text.](/doc/create-book.jpg)
 
