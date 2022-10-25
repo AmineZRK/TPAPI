@@ -12,7 +12,7 @@ router.post('/create-user', UserController.createUser);
 //login
 router.post('/login',UserController.login);
 //Get All user
-router.get('/all-user', UserController.allUser);
+router.get('/all-user',auth, UserController.allUser);
 //get user by Id
 router.get('/single-user/:id', UserController.singleUser);
 //update user
@@ -35,6 +35,8 @@ router.get('/single-book/:id', BookController.singleBook);
 router.put('/update-book/:id', auth,fileUpload("./storage/images"), BookController.updateBook);
 //delete Book by id
 router.delete('/delete-book/:id',auth,  BookController.deleteBook);
+//add review
 router.put('/add-review',auth,BookController.addReview)
+//delete review
 router.put('/delete-review/:idBook&:idReview',auth,  BookController.deleteReview);
 module.exports = router;

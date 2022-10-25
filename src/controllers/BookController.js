@@ -197,12 +197,12 @@ module.exports = class BookController {
               code: 200,
               message: "Book Delete Successfully",
               data: userDeleteinfo,
-            });
+            }); 
           }else{
             res.status(401).json({
               code: 401,
               message: "Book not exist"
-            })
+            }) 
           }
         }else{
           res.status(401).json({

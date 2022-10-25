@@ -14,7 +14,7 @@ module.exports = class UserController {
 
   //New User Create
   static createUser = async (req, res) => {
-    let payload = req.body;
+    let payload = req.body; 
     console.log(payload.name);
 
     
@@ -141,6 +141,15 @@ if(!Exist){
         bcrypt.compare(reqpassword,singleuUserData.password).then(
           (data)=>{
             if(data){
+              const token=jwt.sign(
+                { 
+                    userId: _id, 
+                    role: role 
+                },
+                'RANDOM_TOKEN_SECRET',
+                { expiresIn: '24h' }
+            )
+              res.cookie('jwt',token, {  expiresIn: '24h' , httpOnly: true })
               res.status(200).json({ 
                 userId: _id, 
                 token: jwt.sign(
@@ -149,7 +158,7 @@ if(!Exist){
                         role: role 
                     },
                     'RANDOM_TOKEN_SECRET',
-                    { expiresIn: '24h' } 
+                    { expiresIn: '24h' }
                 ),
                 isAdmin: role
             });
@@ -185,17 +194,23 @@ if(!Exist){
 
   //All User information
   static allUser = async(req, res)=>{
-    try{
-      const allUserInfo = await User.find();
-      
+    const isAdmin=res.locals.isAdmin;
 
-      //return console.log(singleUserInfo);
+    try{
+      if(isAdmin){
+        const allUserInfo = await User.find().select('-password');
       return res.status(200).json({
         code: 200,
         message: "User Information",
         data: allUserInfo,
       });
-      //return console.log(singleUserInfo)
+      }else{
+        res.status(400).json({
+          code: 400,
+          message: 'you dont have acces',
+          error: true,
+        });
+      }
     }
     catch(error){
       res.status(501).json({
